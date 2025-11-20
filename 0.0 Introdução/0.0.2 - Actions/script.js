@@ -1,79 +1,66 @@
-// const INCREMENTAR = "INCREMENTAR";
-// const SOMAR = "SOMAR";
-
-// const somar = payload => {
-//   return { type: SOMAR, payload };
-// };
-
-// const incrementar = () => {
-//   return { type: INCREMENTAR };
-// };
-
-// const initial = 0;
-
-// const reducer = (state = initial, { type, payload }) => {
-//   let types = {
-//     somar: () => state + payload,
-//     incrementar: () => state + 1,
-//   };
-
-//   const action = types[type.toLowerCase()];
-//   return action ? action() : state;
-// };
-
-// const store = Redux.createStore(reducer);
-// let state = store.getState();
-
-// store.dispatch(somar(9));
-// store.dispatch(incrementar());
-
-// state = store.getState();
-
-// console.log(state);
-
-const btnAdd = document.querySelector(".add");
-const btnSub = document.querySelector(".sub");
-const result = document.querySelector(".result");
+// Global Variables
+const SUM = "sum";
+const SUB = "sub";
+const MULTI = "multi";
 
 const initial = 0;
 
-const ADD = "add";
-const SUB = "sub";
-
-const add = () => {
-  return { type: ADD };
+// Global Action Function
+const MAKE_SUM = value => {
+  return { type: SUM, payload: value };
 };
 
-const sub = () => {
-  return { type: SUB };
+const MAKE_SUB = value => {
+  return { type: SUB, payload: value };
 };
 
+const MAKE_MULTI = value => {
+  return { type: MULTI, payload: value };
+};
+
+// Reducer Function
 const reducer = (state = initial, { type, payload }) => {
+  if (!state) return 0;
+
   switch (type) {
-    case "add":
-      return (result.innerHTML = ++state);
+    case SUM:
+      return state + payload;
       break;
-    case "sub":
-      return (result.innerHTML = --state);
+    case SUB:
+      return state - payload;
+      break;
+    case MULTI:
+      return state * payload;
       break;
     default:
-      return;
+      return state;
   }
 };
 
-const { getState, dispatch } = Redux.createStore(reducer);
-let state = getState();
+// Factory Store Function
+const store = Redux.createStore(reducer);
+let state = store.getState();
 
-btnAdd.addEventListener("click", () => {
-  dispatch(add());
-  state = getState();
-  console.log(state);
-});
+// HTMLElements
 
-btnSub.addEventListener("click", () => {
-  dispatch(sub());
-  state = getState();
-  console.log(state);
-});
+// Button
+const add = document.querySelector(".add");
+const sub = document.querySelector(".sub");
+const multi = document.querySelector(".multi");
+// Inputs
+const addInput = document.querySelector(".add-input");
+const subInput = document.querySelector(".sub-input");
+const multiInput = document.querySelector(".multi-input");
+// Paragraph - Result
+const result = document.querySelector(".result");
+result.innerHTML = 0;
 
-console.log(result);
+const asteristico = "*";
+const buffA = ["9"],
+  buffB = ["8"];
+if (asteristico === "*") {
+  const sanitizedBuffer = Number(buffA.join("")) * Number(buffB.join(""));
+  console.log(sanitizedBuffer);
+}
+
+console.log(asteristico.codePointAt(0));
