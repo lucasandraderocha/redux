@@ -20,8 +20,6 @@ const MAKE_MULTI = value => {
 
 // Reducer Function
 const reducer = (state = initial, { type, payload }) => {
-  if (!state) return 0;
-
   switch (type) {
     case SUM:
       return state + payload;
@@ -55,12 +53,58 @@ const multiInput = document.querySelector(".multi-input");
 const result = document.querySelector(".result");
 result.innerHTML = 0;
 
-const asteristico = "*";
-const buffA = ["9"],
-  buffB = ["8"];
-if (asteristico === "*") {
-  const sanitizedBuffer = Number(buffA.join("")) * Number(buffB.join(""));
-  console.log(sanitizedBuffer);
-}
+const addValue = () => {
+  let value = Number(addInput.value);
 
-console.log(asteristico.codePointAt(0));
+  if (value > 1) {
+    store.dispatch(MAKE_SUM(value));
+  } else {
+    store.dispatch(MAKE_SUM(1));
+  }
+  state = store.getState();
+  addInput.value = "0";
+};
+
+const subValue = () => {
+  const value = Number(subInput.value);
+
+  if (value > 1) {
+    store.dispatch(MAKE_SUB(value));
+  } else {
+    store.dispatch(MAKE_SUB(1));
+  }
+  state = store.getState();
+  subInput.value = "0";
+};
+
+const multiValue = () => {
+  const value = Number(multiInput.value);
+  if (value == 0) store.dispatch(MAKE_MULTI(0));
+
+  if (value > 1) {
+    store.dispatch(MAKE_MULTI(value));
+  } else {
+    store.dispatch(MAKE_MULTI(1));
+  }
+  state = store.getState();
+  multiInput.value = "0";
+};
+
+const addEvent = () => {
+  addValue(addInput);
+  result.innerHTML = state;
+};
+
+const subEvent = () => {
+  subValue();
+  result.innerHTML = state;
+};
+
+const multiEvent = () => {
+  multiValue();
+  result.innerHTML = state;
+};
+
+add.addEventListener("click", addEvent);
+sub.addEventListener("click", subEvent);
+multi.addEventListener("click", multiEvent);
