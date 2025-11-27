@@ -4,42 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="../../Style/global.css" />
     <script src="../../redux.min.js"></script>
   </head>
-  <body>
-    <div class="container">
-      <fieldset>
-        <button class="add">Add</button>
+  <body class="flex jc ac">
+    <div class="container gap-16">
+      <p class="result paragraph txt-center"></p>
+      <div class="flex column">
         <input
           type="number"
           placeholder="input here some number..."
-          class="add-input"
+          class="input txt-center"
           value="0"
           min="0"
         />
-      </fieldset>
-      <fieldset>
-        <button class="sub">Sub</button>
-        <input
-          type="number"
-          placeholder="input here some number..."
-          class="sub-input"
-          value="0"
-          min="0"
-        />
-      </fieldset>
-
-      <fieldset>
-        <button class="multi">Multi</button>
-        <input
-          type="number"
-          placeholder="input here some number..."
-          class="multi-input"
-          value="0"
-          min="0"
-        />
-      </fieldset>
-      <p class="result"></p>
+      </div>
+      <div class="flex row gap-8">
+        <button class="add btn">Add</button>
+        <button class="sub btn">Sub</button>
+        <button class="multi btn">Multi</button>
+      </div>
     </div>
     <script src="./script.js"></script>
   </body>

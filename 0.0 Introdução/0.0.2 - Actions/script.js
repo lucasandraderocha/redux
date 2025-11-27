@@ -46,15 +46,14 @@ const add = document.querySelector(".add");
 const sub = document.querySelector(".sub");
 const multi = document.querySelector(".multi");
 // Inputs
-const addInput = document.querySelector(".add-input");
-const subInput = document.querySelector(".sub-input");
-const multiInput = document.querySelector(".multi-input");
+const input = document.querySelector(".input");
+
 // Paragraph - Result
 const result = document.querySelector(".result");
 result.innerHTML = 0;
 
 const addValue = () => {
-  let value = Number(addInput.value);
+  let value = Number(input.value);
 
   if (value > 1) {
     store.dispatch(MAKE_SUM(value));
@@ -62,11 +61,11 @@ const addValue = () => {
     store.dispatch(MAKE_SUM(1));
   }
   state = store.getState();
-  addInput.value = "0";
+  input.value = "0";
 };
 
 const subValue = () => {
-  const value = Number(subInput.value);
+  const value = Number(input.value);
 
   if (value > 1) {
     store.dispatch(MAKE_SUB(value));
@@ -74,11 +73,11 @@ const subValue = () => {
     store.dispatch(MAKE_SUB(1));
   }
   state = store.getState();
-  subInput.value = "0";
+  input.value = "0";
 };
 
 const multiValue = () => {
-  const value = Number(multiInput.value);
+  const value = Number(input.value);
   if (value == 0) store.dispatch(MAKE_MULTI(0));
 
   if (value > 1) {
@@ -87,11 +86,11 @@ const multiValue = () => {
     store.dispatch(MAKE_MULTI(1));
   }
   state = store.getState();
-  multiInput.value = "0";
+  input.value = "0";
 };
 
 const addEvent = () => {
-  addValue(addInput);
+  addValue();
   result.innerHTML = state;
 };
 

@@ -4,14 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="../../Style/global.css" />
     <script src="../../redux.min.js"></script>
   </head>
-  <body>
-    <div class="container">
-      <p class="display">0</p>
-      <button class="add">Add</button>
-      <button class="sub">Sub</button>
+  <body class="flex jc ac row gap-32 px-lg">
+    <div class="container flex gap-8 column px-md py-md">
+      <h1>AUMENTATOR & DECREMENTOR</h1>
+      <p class="display paragraph txt-center"></p>
+      <button class="add btn" data-type="increment">Add</button>
+      <button class="sub btn" data-type="decrement">Sub</button>
     </div>
-    <script src="./script.js"></script>
+    <div class="container flex gap-8 column px-md py-md">
+      <h1 class="txt-center">TO-DO</h1>
+      <div class="w-full container gap-4 row">
+        <input type="text" name="" id="input" class="task input" />
+        <button class="post btn w-fit">+</button>
+      </div>
+      <div class="flex column gap-16">
+        <div class="flex row jbtw px-sm py-sm brd-sm outline-sm shadow-smooth">
+          <span>Qtd. Tarefas:</span>
+          <span class="tasklistCounter"></span>
+        </div>
+        <ul id="tasklist" class="flex column gap-8"></ul>
+      </div>
+    </div>
+    <script type="module" src="./script.js"></script>
   </body>
 </html>

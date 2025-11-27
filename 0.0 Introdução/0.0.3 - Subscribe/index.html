@@ -4,12 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="../../Style/global.css" />
     <script src="../../redux.min.js"></script>
   </head>
-  <body>
-    <div class="container">
-      <p class="display"></p>
-      <button class="generate">Generate</button>
+  <body class="flex jc ac">
+    <div class="container flex gap-8">
+      <p class="display paragraph txt-center"></p>
+      <input
+        type="number"
+        name=""
+        id="quantity"
+        class="input txt-center"
+        placeholder="Syllables quantity..."
+        min="1"
+      />
+      <button class="btn generate">Create</button>
     </div>
     <script src="./script.js"></script>
   </body>

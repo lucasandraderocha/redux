@@ -8,9 +8,9 @@
   - [x] Ferramentas
 
 - [ ] Redux Básico
-  - [ ] Store
-  - [ ] Action
-  - [ ] Subscribe
+  - [x] Store
+  - [x] Action
+  - [x] Subscribe
   - [ ] Reducer
   - [ ] Função Pura
   - [ ] Imutabilidade
