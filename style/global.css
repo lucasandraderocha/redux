@@ -33,6 +33,9 @@ body {
   --row: row;
   --row-reverse: row;
 
+  /* Wrap */
+  --wrap: wrap;
+
   /* Flex - Alignment */
   /* Justify */
   --justify-center: center;
@@ -65,9 +68,9 @@ body {
   --line-lg: 4px solid;
 
   /* Box-shadow */
-  --smooth: 0 8px 16px -8px #aaab;
-  --dim: 0 24px 24px -12px #bbb5;
-  --deep: 0 32px 24px -12px #aaa5;
+  --bs-smooth: 0 8px 16px -8px #aaab;
+  --bs-dim: 0 24px 24px -12px #bbb5;
+  --bs-deep: 0 32px 24px -12px #aaa5;
 }
 
 /* Width */
@@ -90,7 +93,10 @@ body {
 .flex {
   display: var(--flex);
 }
-
+/* Flex - Wrap */
+.wrap {
+  flex-wrap: wrap;
+}
 /* Flex - Direction */
 .column {
   flex-direction: var(--column);
@@ -245,14 +251,14 @@ body {
 
 /* Box-shadow */
 .shadow-smooth {
-  box-shadow: var(--smooth);
+  box-shadow: var(--bs-smooth);
 }
 .shadow-dim {
-  box-shadow: var(--smooth), var(--dim);
+  box-shadow: var(--bs-smooth), var(--bs-dim);
 }
 
 .shadow-smooth {
-  box-shadow: var(--smooth), var(--dim), var(--deep);
+  box-shadow: var(--bs-smooth), var(--bs-dim), var(--bs-deep);
 }
 
 /* Button */
@@ -294,4 +300,13 @@ body {
   overflow-wrap: anywhere;
   word-wrap: break-word;
   width: 100%;
+}
+
+.delete-btn {
+  color: red;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  outline: var(--line-sm) #bbb;
+  box-shadow: var(--bs-smooth);
+  cursor: pointer;
 }

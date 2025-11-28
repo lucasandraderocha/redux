@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="../../Style/global.css" />
     <script src="../../redux.min.js"></script>
   </head>
-  <body class="flex jc ac row gap-32 px-lg">
-    <div class="container flex gap-8 column px-md py-md">
+  <body class="flex jc astart row gap-32 px-lg py-lg wrap">
+    <div
+      class="container flex gap-8 column px-md py-md"
+      style="min-width: 150px"
+    >
       <h1>AUMENTATOR & DECREMENTOR</h1>
       <p class="display paragraph txt-center"></p>
       <button class="add btn" data-type="increment">Add</button>
       <button class="sub btn" data-type="decrement">Sub</button>
     </div>
-    <div class="container flex gap-8 column px-md py-md">
+    <div
+      class="w-50 container flex gap-8 column px-md py-md"
+      style="min-width: 350px"
+    >
       <h1 class="txt-center">TO-DO</h1>
-      <div class="w-full container gap-4 row">
-        <input type="text" name="" id="input" class="task input" />
+      <div class="container gap-4 row">
+        <input type="text" name="" id="input" class="task input w-100" />
         <button class="post btn w-fit">+</button>
       </div>
       <div class="flex column gap-16">
@@ -26,6 +32,17 @@
           <span class="tasklistCounter"></span>
         </div>
         <ul id="tasklist" class="flex column gap-8"></ul>
+      </div>
+    </div>
+    <div class="flex column gap-16 container jc ac" style="min-width: 350px">
+      <h1>Cart</h1>
+      <div class="container gap-4 row">
+        <button class="post btn w-fit">Produto A</button>
+        <button class="post btn w-fit">Produto B</button>
+        <button class="post btn w-fit">Produto C</button>
+      </div>
+      <div class="flex container column gap-16">
+        <ul class="flex column gap-8"></ul>
       </div>
     </div>
     <script type="module" src="./script.js"></script>

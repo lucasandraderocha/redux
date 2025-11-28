@@ -2,6 +2,12 @@ const todo = () => {
   // HTMLElements
   const post = document.querySelector(".post");
   const task = document.querySelector(".task");
+  const tasklist = document.querySelector("#tasklist");
+  const tasklistCounter = document.querySelector(".tasklistCounter");
+  const taskContent = document.createElement("p");
+  const taskDelete = document.createElement("span");
+  taskDelete.textContent = "×";
+  taskDelete.classList.add("delete-btn");
 
   // Global Variables
   const ADD_TASK = "ADD_TASK";
@@ -41,7 +47,6 @@ const todo = () => {
       case REMOVE_TASK:
         const { todos } = state;
         let filteredList = todos.filter(item => item.id !== payload);
-        console.log(filteredList);
         return { todos: filteredList };
         break;
       default:
@@ -54,36 +59,52 @@ const todo = () => {
 
   // Subscription Render
   subscribe(() => {
-    const tasklist = document.querySelector("#tasklist");
-    const tasklistCounter = document.querySelector(".tasklistCounter");
-    const state = getState();
-    // tasklist.innerHTML = state.todos
-    //   .map(
-    //     item =>
-    //       `<li data-id="${item.id}" class="flex jbtw brd-sm outline-sm px-sm py-sm">
-    //       <p>${item.task}</p>
-    //       <span class="delete-btn" style="color: red">x</span>
-    //     </li>`
-    //   )
-    //   .join("");
-
-    tasklistCounter.innerHTML = tasklist.childNodes.length;
+    const { todos } = getState();
+    tasklist.innerHTML = "";
+    todos.forEach(todo => {
+      const taskContainer = document.createElement("li");
+      [
+        "flex",
+        "row",
+        "ac",
+        "jbtw",
+        "brd-sm",
+        "outline-sm",
+        "px-sm",
+        "py-sm",
+      ].map(cls => taskContainer.classList.add(cls));
+      const content = taskContent.cloneNode();
+      content.textContent = todo.task;
+      const remove = taskDelete.cloneNode(true);
+      remove.dataset.id = todo.id;
+      taskContainer.append(content, remove);
+      tasklist.append(taskContainer);
+    });
+    tasklistCounter.textContent = todos.length;
   });
 
   // HTMLs Event
-  const triggerEvent = () => {
-    const tasklist = document.querySelector("#tasklist");
-    const { todos } = getState();
-    console.log({ tasklist, todos });
-    todos.map(item => tasklist.insertAdjacentElement);
+  const triggerAddEvent = () => {
+    const generatedID = genId();
+
     dispatch({
       type: ADD_TASK,
-      payload: { id: genId(), task: task.value },
+      payload: { id: generatedID, task: task.value },
     });
   };
 
-  post.addEventListener("click", triggerEvent);
-  window.onload = () => {};
+  const triggerRemoveEvent = ({ target }) => {
+    const removeTarget = "delete-btn";
+    if (target.className === removeTarget) {
+      console.log("Deu boa: ", { e: target, dataset: target.dataset.id });
+      dispatch(ON_REMOVE(target.dataset.id));
+    }
+  };
+
+  post.addEventListener("click", triggerAddEvent);
+  document
+    .querySelector("#tasklist")
+    .addEventListener("click", triggerRemoveEvent);
 };
 
 const genId = () => {
